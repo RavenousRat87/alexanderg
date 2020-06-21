@@ -11,10 +11,8 @@ public class MyUtilClass {
 	private final static double COST_FACTOR = 2.0;
 
 	/**
+	 * calculates the distance between 2 cities
 	 * 
-	 * @param startCity
-	 * @param endCity
-	 * @return
 	 */
 	public static double calcDistance(City startCity, City endCity) {
 		return Math.sqrt(
@@ -38,10 +36,19 @@ public class MyUtilClass {
 		return resultDelivery;
 	}
 
-	public static Date addHours(Date date, int i) {
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.HOUR_OF_DAY, i);
-		return cal.getTime();
+	/**
+	 * add hours to the given date using Calendar
+	 * 
+	 * @return new date where the hours are added
+	 */
+	public static Date addHours(Date date, int hoursToAdd) {
+		Date result = null;
+		if (date != null) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			cal.add(Calendar.HOUR_OF_DAY, hoursToAdd);
+			result = cal.getTime();
+		}
+		return result;
 	}
 }

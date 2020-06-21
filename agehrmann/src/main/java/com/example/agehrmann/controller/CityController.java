@@ -19,6 +19,10 @@ public class CityController {
 	@Autowired
 	private ICityRepository repository;
 
+	/**
+	 * Looks for the given city in Repository and returns a message if the city
+	 * already exists
+	 */
 	@GetMapping("/city")
 	public String findCity(@RequestParam(value = PARA_NAME) String cityName) {
 
@@ -31,6 +35,14 @@ public class CityController {
 		return String.format("%s ist noch nicht eingetragen.", cityName);
 	}
 
+	/**
+	 * creates a city or updates if it already exists.
+	 * 
+	 * @param cityName name of the city
+	 * @param x        x coordinate of the city
+	 * @param y        y coordinate of the city
+	 * @return message if the city was created/updated
+	 */
 	@PostMapping("/city")
 	public String putCity(@RequestParam(value = PARA_NAME) String cityName, @RequestParam(value = PARA_X) String x,
 			@RequestParam(value = PARA_Y) String y) {

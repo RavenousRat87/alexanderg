@@ -33,11 +33,22 @@ public class DeliveryController {
 	@Autowired
 	private ICityRepository cityRepository;
 
+	/**
+	 * 
+	 * 
+	 * @return
+	 */
 	@GetMapping("/delivery")
 	public List<Delivery> findAllDeliveriesInNextDay() {
 		return customDeliveryRepository.findDeliveriesOfNextWeek();
 	}
 
+	/**
+	 * Creates a delivery with start and end city and a weight. the delivery is
+	 * saved in DB.
+	 * 
+	 * @return message if the delivery was created
+	 */
 	@PostMapping("/delivery")
 	public String putDelivery(@RequestParam(value = PARA_START) String startCity,
 			@RequestParam(value = PARA_END) String endCity, @RequestParam(value = PARA_WEIGHT) Double weight) {
